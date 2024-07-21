@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a0552ba326.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Todo List</title>
+</head>
+
+<body>
+
+    <div class="first-container">
+        <div>
+            <div>
+
+                <header>
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <h3>ToDo List</h3>
+                </header>
+
+                <form id="item-form">
+
+                    <div>
+                        <label for="item-input">Enter Item</label>
+                        <input type="text" id="item-input" />
+                        <div id="input-invalid"></div>
+                    </div>
+
+                    <button type="submit">
+                        <i class="fa fa-plus"> </i>
+                        Add Item
+                    </button>
+
+                </form>
+
+                <div>
+                    <input id="filter" type="text" placeholder="Search Item..." />
+                </div>
+
+                <ul id="item-list">
+
+                    <li>
+                        An item
+                        <i class="fa fa-x"></i>
+                    </li>
+
+                    <li>
+                        A second item
+                        <i class="fa fa-x"></i>
+                    </li>
+
+                    <li>
+                        A third item
+                        <i class="fa fa-x"></i>
+                    </li>
+
+                    <li>
+                        A fourth item
+                        <i class="fa fa-x"></i>
+                    </li>
+
+                    <li>
+                        A fifth item
+                        <i class="fa fa-x"></i>
+                    </li>
+
+                </ul>
+
+                <div>
+                    <button id="items-clear" type="button">
+                        Clear All
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
