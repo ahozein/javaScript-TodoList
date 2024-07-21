@@ -3,6 +3,19 @@ const itemInput = document.getElementById('item-input');
 const inputInvalid = document.getElementById('input-invalid');
 const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('items-clear');
+const searchInput = document.getElementById('filter');
+
+function checkUI() {
+    const items = itemList.querySelectorAll('li');
+
+    if (items.length === 0){
+        clearBtn.style.display = 'none';
+        searchInput.style.display = 'none';
+    } else {
+        clearBtn.style.display = 'block';
+        searchInput.style.display = 'block';
+    }
+}
 
 
 itemForm.addEventListener('submit', (e) => {
@@ -27,14 +40,22 @@ itemForm.addEventListener('submit', (e) => {
     itemList.appendChild(li);
 
     itemInput.value = '';
+
+    checkUI();
 });
 
 itemList.addEventListener('click', (e) => {
     if (e.target.id === 'remove-item' && e.target.classList.contains('fa-x')) {
         e.target.parentElement.remove();
     }
+
+    checkUI();
 });
 
 clearBtn.addEventListener('click', () => {
     itemList.innerHTML = '';
+
+    checkUI();
 });
+
+checkUI();
