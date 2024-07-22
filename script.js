@@ -8,7 +8,7 @@ const searchInput = document.getElementById('filter');
 function checkUI() {
     const items = itemList.querySelectorAll('li');
 
-    if (items.length === 0){
+    if (items.length === 0) {
         clearBtn.style.display = 'none';
         searchInput.style.display = 'none';
     } else {
@@ -56,6 +56,21 @@ clearBtn.addEventListener('click', () => {
     itemList.innerHTML = '';
 
     checkUI();
+});
+
+searchInput.addEventListener('input', (e) => {
+    const inputText = e.target.value.toLowerCase();
+    const items = itemList.querySelectorAll('li');
+
+    items.forEach((item) => {
+        const itemName = item.firstChild.textContent.toLowerCase();
+
+        if (itemName.indexOf(inputText) !== -1) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
 });
 
 checkUI();
