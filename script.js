@@ -5,6 +5,8 @@ const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('items-clear');
 const searchInput = document.getElementById('filter');
 
+
+
 function checkUI() {
     const items = itemList.querySelectorAll('li');
 
@@ -16,6 +18,38 @@ function checkUI() {
         searchInput.style.display = 'block';
     }
 }
+
+function createItem(item) {
+    const li = document.createElement('li');
+    li.textContent = item;
+
+    const icon = document.createElement('i');
+    icon.className = 'fa fa-x';
+    icon.id = 'remove-item'
+
+    li.appendChild(icon);
+    itemList.appendChild(li);
+}
+
+function getItemsFromStorage() {
+    let storageItems;
+
+    if (localStorage.getItem('items') === null) {
+        storageItems = [];
+    } else {
+        storageItems = JSON.parse(localStorage.getItem('items'));
+    }
+
+    return storageItems;
+}
+
+function addItemToStorage(item) {
+    const storageItems = getItemsFromStorage();
+
+    storageItems.push(item);
+    localStorage.setItem('items', JSON.stringify(storageItems));
+}
+
 
 
 itemForm.addEventListener('submit', (e) => {
@@ -29,15 +63,8 @@ itemForm.addEventListener('submit', (e) => {
         inputInvalid.innerText = '';
     }
 
-    const li = document.createElement('li');
-    li.textContent = newItem;
-
-    const icon = document.createElement('i');
-    icon.className = 'fa fa-x';
-    icon.id = 'remove-item'
-
-    li.appendChild(icon);
-    itemList.appendChild(li);
+    createItem(newItem);
+    addItemToStorage(newItem);
 
     itemInput.value = '';
 
@@ -71,6 +98,13 @@ searchInput.addEventListener('input', (e) => {
             item.style.display = 'none';
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const storageItems = getItemsFromStorage();
+    storageItems.forEach(item => createItem(item));
+
+    checkUI();
 });
 
 checkUI();
