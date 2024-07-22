@@ -52,6 +52,7 @@ form>div>input[type="text"] {
 #input-invalid {
     color: red;
     font-weight: 100;
+    margin-top: 5px;
 }
 
 input[type="text"]:focus {
@@ -62,8 +63,8 @@ input[type="text"]:focus {
 }
 
 form>button {
-    width: 100px;
-    height: 30px;
+    width: 110px;
+    height: 35px;
     background-color: rgb(56, 56, 56);
     color: white;
     border: none;
@@ -118,4 +119,8 @@ ul>li>i {
 #items-clear:hover {
     background-color: rgb(56, 56, 56);
     color: white;
+}
+
+.edit-mode {
+    color: #bababa;
 }
