@@ -50,6 +50,13 @@ function addItemToStorage(item) {
     localStorage.setItem('items', JSON.stringify(storageItems));
 }
 
+function removeItemFromStorage(item){
+    let storageItems = getItemsFromStorage();
+
+    storageItems = storageItems.filter((content) => content !== item);
+    localStorage.setItem('items', JSON.stringify(storageItems));
+}
+
 
 
 itemForm.addEventListener('submit', (e) => {
@@ -75,12 +82,14 @@ itemList.addEventListener('click', (e) => {
     if (e.target.id === 'remove-item' && e.target.classList.contains('fa-x')) {
         e.target.parentElement.remove();
     }
+    removeItemFromStorage(e.target.parentElement.textContent);
 
     checkUI();
 });
 
 clearBtn.addEventListener('click', () => {
     itemList.innerHTML = '';
+    localStorage.removeItem('items');
 
     checkUI();
 });
